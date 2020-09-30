@@ -9,13 +9,22 @@ public class Main {
 	public static void main(String[] args) {
 		System.out.println("Welcome to User Registration!");
 		
-		System.out.println("Enter the first name:");
-		String firstName = sc.nextLine().trim();
-		
-		if(firstName.matches("^[A-Z][a-z]{2,}")) 
-			System.out.println("First Name is valid.");
-		else
-			System.out.println("First Name is invalid.");
+		validate("First Name","^[A-Z][a-z]{2,}");
+		validate("Last Name", "^[A-Z][a-z]{2,}");
+		System.out.println("Registration successful!");
 	}
-
+			
+	public static void validate(String fieldName, String pattern) {
+		boolean loop=true;
+		while(loop) {
+			System.out.println("Enter the "+fieldName+":");
+			String field = sc.nextLine().trim();	
+			if(field.matches(pattern)) {
+				System.out.println(":) "+fieldName+" is valid! (:");
+				loop= false;
+			}
+			else
+				System.out.println(":( "+fieldName+" is invalid. ):");
+		}
+	}
 }
