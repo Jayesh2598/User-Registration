@@ -12,6 +12,7 @@ public class Main {
 		validate("First Name","^[A-Z][a-z]{2,}");
 		validate("Last Name", "^[A-Z][a-z]{2,}");
 		validate("Email","(^[a-zA-Z][a-zA-Z0-9_]{2,})([.+-][a-zA-Z0-9]{1,})?@([a-zA-Z0-9]{1,}).[a-zA-Z]{2,}(.[a-zA-Z]{2,})$");
+		validate("Mobile number","[0-9]{1,2}[' '][7-9][0-9]{9}");
 		System.out.println("Registration successful!");
 	}
 			
