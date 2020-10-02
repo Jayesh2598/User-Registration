@@ -30,6 +30,7 @@ public class TestUserRegistration {
 		assertEquals(expectedPassword, actualPassword);
 	}
 	
+	@Test
 	//Sad Test
 	public void SadTests() {
 		boolean expectedFirstName= false;

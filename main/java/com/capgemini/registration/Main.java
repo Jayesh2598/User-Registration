@@ -15,7 +15,7 @@ public class Main {
 	public static final String passwordPattern= "[[*&^%$#@!`.,?:;]{1}(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9_]]{8,}";
 	
 	public static void main(String[] args) {
-		System.out.println("Welcome to User Registration!");
+		System.out.println("Welcome to User Registration!\n");
 		
 		if(validate(takeInput("First Name"),firstNamePattern))
 			System.out.println("First Name is valid!\n");
