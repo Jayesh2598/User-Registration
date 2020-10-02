@@ -11,23 +11,22 @@ public class Main {
 		
 		validate("First Name","^[A-Z][a-z]{2,}");
 		validate("Last Name", "^[A-Z][a-z]{2,}");
-		validate("Email","(^[a-zA-Z][a-zA-Z0-9_]{2,})([.+-][a-zA-Z0-9]{1,})?@([a-zA-Z0-9]{1,}).[a-zA-Z]{2,}(.[a-zA-Z]{2,})$");
+		validate("Email","^[a-zA-Z][a-zA-Z0-9_+-]{2,}([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9]+[.][a-zA-Z]{2,}([.][a-zA-Z]{2,})?$");
 		validate("Mobile number","[0-9]{1,2}[' '][7-9][0-9]{9}");					
-		validate("Password","(?=.*[A-Z])(?=.*[0-9])(?=.*[`!@#$%^&*.,?:;'\"]).[a-zA-Z0-9_]{7,}");
+		validate("Password","[[*&^%$#@!`.,?:;]{1}(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9_]]{8,}");
 		System.out.println("Registration successful!");
 	}
-			
 	public static void validate(String fieldName, String pattern) {
 		boolean loop=true;
 		while(loop) {
 			System.out.println("Enter the "+fieldName+":");
 			String field = sc.nextLine().trim();	
 			if(field.matches(pattern)) {
-				System.out.println(":) "+fieldName+" is valid! (:");
+				System.out.println(fieldName+" is valid!");
 				loop= false;
 			}
 			else
-				System.out.println(":( "+fieldName+" is invalid. ):");
+				System.out.println(fieldName+" is invalid.");
 		}
 	}
 }
