@@ -2,6 +2,8 @@ package com.capgemini.registrationTest;
 
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
+
+import com.capgemini.registration.InvalidUserDetailsException;
 import com.capgemini.registration.Main;
 
 public class TestUserRegistration {
@@ -32,7 +34,7 @@ public class TestUserRegistration {
 	
 	@Test
 	//Sad Test
-	public void SadTests() {
+	public void SadTests() throws InvalidUserDetailsException{
 		boolean expectedFirstName= false;
 		boolean actualFirstName= Main.validate("jayesh", Main.firstNamePattern);
 		assertEquals(expectedFirstName, actualFirstName);
@@ -50,7 +52,7 @@ public class TestUserRegistration {
 		assertEquals(expectedPhoneNo, actualPhoneNo);
 		
 		boolean expectedPassword= false;
-		boolean actualPassword= Main.validate("!@Jay2598", Main.passwordPattern);
+		boolean actualPassword= Main.validate("!jayesh", Main.passwordPattern);
 		assertEquals(expectedPassword, actualPassword);
 	}
 	

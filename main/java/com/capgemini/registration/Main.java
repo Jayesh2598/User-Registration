@@ -14,33 +14,53 @@ public class Main {
 	public static final String phNoPattern= "[0-9]{1,2}[' '][7-9][0-9]{9}";
 	public static final String passwordPattern= "[[*&^%$#@!`.,?:;]{1}(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9_]]{8,}";
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InvalidUserDetailsException {
 		System.out.println("Welcome to User Registration!\n");
 		
-		if(validate(takeInput("First Name"),firstNamePattern))
-			System.out.println("First Name is valid!\n");
-		else
-			System.out.println("First Name is invalid.\n");
+		try {
+			if(validate(takeInput("First Name"),firstNamePattern))
+				System.out.println("First Name is valid!\n");
+			else
+				throw new InvalidUserDetailsException("First Name is invalid.\n");
+		} catch (InvalidUserDetailsException e) {
+			System.out.println(e.getMessage());
+		}
 		
-		if(validate(takeInput("Last Name"),lastNamePattern))
-			System.out.println("Last Name is valid!\n");
-		else
-			System.out.println("Last Name is invalid.\n");
+		try {
+			if(validate(takeInput("Last Name"),lastNamePattern))
+				System.out.println("Last Name is valid!\n");
+			else
+				throw new InvalidUserDetailsException("Last Name is invalid.\n");
+		} catch (InvalidUserDetailsException e) {
+			System.out.println(e.getMessage());
+		}
 		
-		if(validate(takeInput("Email"),emailPattern))
-			System.out.println("Email is valid!\n");
-		else
-			System.out.println("Email is invalid.\n");
+		try {
+			if(validate(takeInput("Email"),emailPattern))
+				System.out.println("Email is valid!\n");
+			else
+				throw new InvalidUserDetailsException("Email is invalid.\n");
+		} catch (InvalidUserDetailsException e) {
+			System.out.println(e.getMessage());
+		}
 		
-		if(validate(takeInput("Mobile number"),phNoPattern))
-			System.out.println("Mobile number is valid!\n");
-		else
-			System.out.println("Mobile number is invalid.\n");
+		try {
+			if(validate(takeInput("Mobile number"),phNoPattern))
+				System.out.println("Mobile number is valid!\n");
+			else
+				throw new InvalidUserDetailsException("Mobile number is invalid.\n");
+		} catch (InvalidUserDetailsException e) {
+			System.out.println(e.getMessage());
+		}
 		
-		if(validate(takeInput("Password"),passwordPattern))
-			System.out.println("Password is valid!\n");
-		else
-			System.out.println("Password is invalid.\n");
+		try {
+			if(validate(takeInput("Password"),passwordPattern))
+				System.out.println("Password is valid!\n");
+			else
+				throw new InvalidUserDetailsException("Password is invalid.\n");
+		} catch (InvalidUserDetailsException e) {
+			System.out.println(e.getMessage());
+		}
 	}
 	
 	public static String takeInput(String fieldName) {
