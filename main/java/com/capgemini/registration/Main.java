@@ -4,9 +4,14 @@ import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+@FunctionalInterface
+interface Validate {
+	public boolean validateUserDetails(String userDetails);
+}
+
 public class Main {
 	
-	static Scanner sc=new Scanner(System.in);
+	static Scanner SC=new Scanner(System.in);
 	
 	public static final String firstNamePattern= "^[A-Z][a-z]{2,}";
 	public static final String lastNamePattern= "^[A-Z][a-z]{2,}";
@@ -18,7 +23,9 @@ public class Main {
 		System.out.println("Welcome to User Registration!\n");
 		
 		try {
-			if(validate(takeInput("First Name"),firstNamePattern))
+			String fName = takeInput("First Name");
+			Validate validateFirstName = (firstname) -> validate(fName,firstNamePattern);
+			if(validateFirstName.validateUserDetails(fName))
 				System.out.println("First Name is valid!\n");
 			else
 				throw new InvalidUserDetailsException("First Name is invalid.\n");
@@ -27,7 +34,9 @@ public class Main {
 		}
 		
 		try {
-			if(validate(takeInput("Last Name"),lastNamePattern))
+			String lName = takeInput("Last Name");
+			Validate validateLastName = (lastname) -> validate(lName,lastNamePattern);
+			if(validateLastName.validateUserDetails(lName))
 				System.out.println("Last Name is valid!\n");
 			else
 				throw new InvalidUserDetailsException("Last Name is invalid.\n");
@@ -36,7 +45,9 @@ public class Main {
 		}
 		
 		try {
-			if(validate(takeInput("Email"),emailPattern))
+			String email = takeInput("Email");
+			Validate validateEmail = (Email) -> validate(email,emailPattern);
+			if(validateEmail.validateUserDetails(email))
 				System.out.println("Email is valid!\n");
 			else
 				throw new InvalidUserDetailsException("Email is invalid.\n");
@@ -45,7 +56,9 @@ public class Main {
 		}
 		
 		try {
-			if(validate(takeInput("Mobile number"),phNoPattern))
+			String phNo = takeInput("Mobile Number");
+			Validate validatePhoneNumber = (PhNo) -> validate(phNo,phNoPattern);
+			if(validatePhoneNumber.validateUserDetails(phNo))
 				System.out.println("Mobile number is valid!\n");
 			else
 				throw new InvalidUserDetailsException("Mobile number is invalid.\n");
@@ -54,7 +67,9 @@ public class Main {
 		}
 		
 		try {
-			if(validate(takeInput("Password"),passwordPattern))
+			String password = takeInput("Password");
+			Validate validatePassword = (pwd) -> validate(password,passwordPattern);
+			if(validatePassword.validateUserDetails(password))
 				System.out.println("Password is valid!\n");
 			else
 				throw new InvalidUserDetailsException("Password is invalid.\n");
@@ -65,7 +80,7 @@ public class Main {
 	
 	public static String takeInput(String fieldName) {
 		System.out.println("Enter the "+fieldName);
-		return sc.nextLine();
+		return SC.nextLine();
 	}
 	
 	public static boolean validate(String field, String pattern) {	
